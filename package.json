@@ -9,7 +9,7 @@
     "url": "https://github.com/chartlingjs/Chartling.js.git"
   },
   "scripts": {
-    "test": "mocha -R spec test/ui"
+    "test": "gulp test"
   },
   "dependences": {},
   "devDependencies": {
