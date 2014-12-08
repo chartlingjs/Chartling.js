@@ -1,14 +1,14 @@
-# Chart.js
+# Chartling.js
 
-*Simple HTML5 Charts using the canvas element* [chartjs.org](http://www.chartjs.org)
+*Simple and extensible HTML5 canvas charts* [Chartling.js](http://chartlingjs.github.io/Chartling.js)
 
 ## Documentation
 
-You can find documentation at [chartjs.org/docs](http://www.chartjs.org/docs/). The markdown files that build the site are available under `/docs`. Please note - in some of the json examples of configuration you might notice some liquid tags - this is just for the generating the site html, please disregard.
+You can find documentation at [http://chartlingjs.github.io/Chartling.js](http://chartlingjs.github.io/Chartling.js). The markdown files that build the site are available under `/docs`. Please note - in some of the json examples of configuration you might notice some liquid tags - this is just for the generating the site html, please disregard.
 
 ## License
 
-Chart.js is available under the [MIT license](http://opensource.org/licenses/MIT).
+Chartling.js is available under the [MIT license](http://opensource.org/licenses/MIT).
 
 ## Bugs & issues
 

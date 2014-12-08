@@ -1,15 +1,15 @@
 {
-  "name": "chart.js",
-  "homepage": "http://www.chartjs.org",
-  "description": "Simple HTML5 charts using the canvas element.",
-  "version": "1.0.1-beta.4",
-  "main": "Chart.js",
+  "name": "chartling.js",
+  "homepage": "http://chartlingjs.github.io/Chartling.js",
+  "description": "Simple and extensible HTML5 canvas charts",
+  "version": "1.0.1",
+  "main": "Chartling.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nnnick/Chart.js.git"
+    "url": "https://github.com/chartlingjs/Chartling.js.git"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "mocha -R spec test/ui"
   },
   "dependences": {},
   "devDependencies": {
