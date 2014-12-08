@@ -1,6 +1,5 @@
-# Chartling.js
-
-*Simple and extensible HTML5 canvas charts* [Chartling.js](http://chartlingjs.github.io/Chartling.js)
+# ![Chartling.js](http://i.imgur.com/jqt9Jaz.png)
+__Simple and extensible HTML5 canvas charts__
 
 ## Documentation
 
