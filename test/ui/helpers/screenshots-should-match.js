@@ -1,4 +1,5 @@
 var path = require('path');
+var fs = require('fs');
 
 var childProcess = require('child_process');
 var phantomjs = require('phantomjs');
@@ -23,6 +24,10 @@ module.exports = function(chartFile, expectedImageFile, done) {
     }
 
     expect(err).to.not.exist;
+
+    var imgBase64 = fs.readFileSync(renderedFile).toString('base64');
+
+    console.log(imgBase64);
 
     compare(expectedPath, renderedFile, function(err, equality) {
       expect(err).to.not.exist;
