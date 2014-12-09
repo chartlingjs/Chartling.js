@@ -1,11 +1,11 @@
 {
-  "name": "Chart.js",
-  "version": "1.0.1-beta.4",
-  "description": "Simple HTML5 Charts using the canvas element",
-  "homepage": "https://github.com/nnnick/Chart.js",
-  "author": "nnnick",
+  "name": "Chartling.js",
+  "version": "1.0.1",
+  "description": "Simple and extensible HTML5 canvas charts",
+  "homepage": "http://chartlingjs.github.io/Chartling.js",
+  "author": "saintedlama",
   "main": [
-    "Chart.min.js"
+    "Chartling.min.js"
   ],
   "dependencies": {}
 }

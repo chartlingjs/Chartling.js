@@ -17,8 +17,8 @@ var gulp = require('gulp'),
 var srcDir = './src/';
 /*
  *	Usage : gulp build --types=Bar,Line,Doughnut
- *	Output: - A built Chart.js file with Core and types Bar, Line and Doughnut concatenated together
- *			- A minified version of this code, in Chart.min.js
+ *	Output: - A built Chartling.js file with Core and types Bar, Line and Doughnut concatenated together
+ *			- A minified version of this code, in Chartling.min.js
  */
 
 gulp.task('build', function(){
@@ -37,11 +37,11 @@ gulp.task('build', function(){
 	}
 
 	return gulp.src(srcFiles)
-		.pipe(concat('Chart.js'))
+		.pipe(concat('Chartling.js'))
 		.pipe(replace('{{ version }}', package.version))
 		.pipe(gulp.dest(outputDir))
 		.pipe(uglify({preserveComments:'some'}))
-		.pipe(concat('Chart.min.js'))
+		.pipe(concat('Chartling.min.js'))
 		.pipe(gulp.dest(outputDir));
 
 	function FileName(moduleName){
@@ -97,7 +97,7 @@ gulp.task('uitest', function(){
 });
 
 gulp.task('library-size', function(){
-	return gulp.src('Chart.min.js')
+	return gulp.src('Chartling.min.js')
 		.pipe(size({
 			gzip: true
 		}));
@@ -126,12 +126,6 @@ gulp.task('server', function(){
 	connect.server({
 		port: 8000
 	});
-});
-
-// Convenience task for opening the project straight from the command line
-gulp.task('_open', function(){
-	exec('open http://localhost:8000');
-	exec('subl .');
 });
 
 gulp.task('dev', ['server', 'default']);
