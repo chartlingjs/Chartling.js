@@ -1,9 +1,9 @@
 # ![Chartling.js](http://i.imgur.com/jqt9Jaz.png)
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/chartlingjs/Chartling.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 __Simple and extensible HTML5 canvas charts__
 
 [![Build Status](https://travis-ci.org/chartlingjs/Chartling.js.svg?branch=master)](https://travis-ci.org/chartlingjs/Chartling.js)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/chartlingjs/Chartling.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Chartling.js is a fork of [Chart.js](https://github.com/nnnick/Chart.js) that aims to be more lightweight more extensible and better testable.
 
