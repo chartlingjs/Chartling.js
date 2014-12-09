@@ -1,35 +1,34 @@
 var path = require('path');
-var fs = require('fs');
 
 var childProcess = require('child_process');
 var phantomjs = require('phantomjs');
-var binPath = phantomjs.path;
 
-var buffertools = require('buffertools');
 var expect = require('chai').expect;
 
-module.exports = function screenshotsShouldMatch(chartFile, expectedFile, done) {
-  var outputFile = path.join(__dirname, '../../_tmp', expectedFile);
-  var expectedPath = path.join(__dirname, '../fixtures', expectedFile);
+var compare = require('./compare');
 
-  var childArgs = [
+module.exports = function(chartFile, expectedImageFile, done) {
+  var renderedFile = path.join(__dirname, '../../_tmp', expectedImageFile);
+  var expectedPath = path.join(__dirname, '../fixtures', expectedImageFile);
+
+  var args = [
     path.join(__dirname, '../phantom/rasterize.js'),
     'test/ui/fixtures/' + chartFile,
-    outputFile
+    renderedFile
   ];
 
-  childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
+  childProcess.execFile(phantomjs.path, args, function(err, stdout, stderr) {
     if (err) {
       console.log(stderr);
     }
 
     expect(err).to.not.exist;
 
-    var actual = fs.readFileSync(outputFile);
-    var expected = fs.readFileSync(expectedPath);
+    compare(expectedPath, renderedFile, function(err, equality) {
+      expect(err).to.not.exist;
+      expect(equality).to.be.lessThan(0.2);
 
-    expect(buffertools.compare(expected, actual)).to.equal(0);
-
-    done();
+      done();
+    });
   });
 };
