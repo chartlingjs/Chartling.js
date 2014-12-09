@@ -37,7 +37,9 @@ module.exports = function(expected, actual, options, cb) {
       return cb(err);
     }
 
-    var equality = parseFloat(match[1]);
+    var equality = parseFloat(match[2]);
+
+    debug('Images are %s percent different', equality * 100);
     cb(null, equality, stdout);
   });
 };
