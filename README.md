@@ -1,4 +1,5 @@
 # ![Chartling.js](http://i.imgur.com/jqt9Jaz.png)
+[![Build Status](https://travis-ci.org/chartlingjs/Chartling.js.svg?branch=master)](https://travis-ci.org/chartlingjs/Chartling.js)
 __Simple and extensible HTML5 canvas charts__
 
 ## Documentation
