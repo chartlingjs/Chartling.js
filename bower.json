@@ -1,11 +1,18 @@
 {
-  "name": "Chartling.js",
-  "version": "1.0.1",
+  "name": "chartlingjs",
+  "version": "1.0.0",
   "description": "Simple and extensible HTML5 canvas charts",
   "homepage": "http://chartlingjs.github.io/Chartling.js",
   "author": "saintedlama",
   "main": [
     "Chartling.min.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
   ],
   "dependencies": {}
 }
