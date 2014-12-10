@@ -268,8 +268,6 @@
 			var easingDecimal = ease || 1;
 			this.clear();
 
-			var ctx = this.chart.ctx;
-
 			this.scale.draw(easingDecimal);
 
 			//Draw all the bars for each dataset

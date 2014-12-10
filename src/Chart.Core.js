@@ -19,14 +19,13 @@
 
 	//Occupy the global variable of Chart, and create a simple base class
 	var Chart = function(context){
-		var chart = this;
 		this.canvas = context.canvas;
 
 		this.ctx = context;
 
 		//Variables global to the chart
-		var width = this.width = context.canvas.width;
-		var height = this.height = context.canvas.height;
+		this.width = context.canvas.width;
+		this.height = context.canvas.height;
 		this.aspectRatio = this.width / this.height;
 		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
 		helpers.retinaScale(this);
@@ -1118,32 +1117,6 @@
 				ctx.fill();
 				ctx.stroke();
 			}
-
-
-			//Quick debug for bezier curve splining
-			//Highlights control points and the line between them.
-			//Handy for dev - stripped in the min version.
-
-			// ctx.save();
-			// ctx.fillStyle = "black";
-			// ctx.strokeStyle = "black"
-			// ctx.beginPath();
-			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
-			// ctx.fill();
-
-			// ctx.beginPath();
-			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
-			// ctx.fill();
-
-			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
-			// ctx.lineTo(this.x, this.y);
-			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
-			// ctx.stroke();
-
-			// ctx.restore();
-
-
-
 		}
 	});
 
@@ -1171,9 +1144,6 @@
 			};
 		},
 		draw : function(animationPercent){
-
-			var easingDecimal = animationPercent || 1;
-
 			var ctx = this.ctx;
 
 			ctx.beginPath();
@@ -1387,10 +1357,6 @@
 				ctx.fillStyle = this.textColor;
 				ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
 
-				//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
-				//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
-				//Instead we'll make a white filled block to put the legendColour palette over.
-
 				ctx.fillStyle = this.legendColorBackground;
 				ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
 
@@ -1495,8 +1461,8 @@
 			this.xLabelRotation = 0;
 			if (this.display){
 				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
-					cosRotation,
-					firstRotatedWidth;
+					cosRotation;
+
 				this.xLabelWidth = originalLabelWidth;
 				//Allow 3 pixels x2 padding either side for label readability
 				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
@@ -1541,9 +1507,7 @@
 			return this.endPoint - (scalingFactor * (value - this.min));
 		},
 		calculateX : function(index){
-			var isRotated = (this.xLabelRotation > 0),
-				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
-				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
+			var	innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
 				valueWidth = innerWidth/(this.valuesCount - ((this.offsetGridLines) ? 0 : 1)),
 				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
 
@@ -1727,8 +1691,7 @@
 				xProtrusionLeft,
 				xProtrusionRight,
 				radiusReductionRight,
-				radiusReductionLeft,
-				maxWidthRadius;
+				radiusReductionLeft;
 			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
 			for (i=0;i<this.valuesCount;i++){
 				// 5px to space the text slightly out - similar to what we do in the draw function.
