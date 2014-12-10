@@ -4,9 +4,9 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Introduction | Chartling.js</title>
+        <title>Advanced Usage | Chartling.js</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Book generated using GitBook">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 1.3.3">
         <meta name="HandheldFriendly" content="true"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -17,8 +17,10 @@
         
     
     
-    <link rel="next" href="./00-Getting-Started.html" />
+    <link rel="next" href="./06_1-Writing-New-Chart-Types.html" />
     
+    
+    <link rel="prev" href="./05-Pie-Doughnut-Chart.html" />
     
 
         
@@ -30,7 +32,7 @@
 
 
         
-    <div class="book" data-level="0" data-basepath="." data-revision="1418228853361">
+    <div class="book" data-level="2" data-basepath="." data-revision="1418228853361">
     
 
 <div class="book-summary">
@@ -48,7 +50,7 @@
         
     
         
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
                     <a href="./index.html">
@@ -164,7 +166,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2" data-path="06-Advanced.html">
+        <li class="chapter active" data-level="2" data-path="06-Advanced.html">
             
                 
                     <a href="./06-Advanced.html">
@@ -338,173 +340,47 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_753">
+                    <section class="normal" id="section-gitbook_748">
                     
-                        <h1 id="chartlingjs">Chartling.js</h1>
-<div class="canvas-holder">
-    <canvas id="linechart" width="250" height="250"></canvas>
-    <canvas id="barchart" width="250" height="250"></canvas>
-    <canvas id="radarchart" width="250" height="250"></canvas>
-    <canvas id="polarchart" width="250" height="250"></canvas>
-    <canvas id="doghnutchart" width="250" height="250"></canvas>
-    <canvas id="piechart" width="250" height="250"></canvas>
-</div>
+                        <h3 id="prototype-methods">Prototype methods</h3>
+<p>For each chart, there are a set of global prototype methods on the shared <code>ChartType</code> which you may find useful. These are available on all charts created with Chartling.js, but for the examples, let&#39;s use a line chart we&#39;ve made.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// For example:</span>
+<span class="hljs-keyword">var</span> myLineChart = <span class="hljs-keyword">new</span> Chart(ctx).Line(data);
+</code></pre>
+<h4 id="clear">.clear()</h4>
+<p>Will clear the chart canvas. Used extensively internally between animation frames, but you might find it useful.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Will clear the canvas that myLineChart is drawn on</span>
+myLineChart.clear();
+<span class="hljs-comment">// =&gt; returns 'this' for chainability</span>
+</code></pre>
+<h4 id="stop">.stop()</h4>
+<p>Use this to stop any current animation loop. This will pause the chart during any current animation frame. Call <code>.render()</code> to re-animate.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Stops the charts animation loop at its current frame</span>
+myLineChart.stop();
+<span class="hljs-comment">// =&gt; returns 'this' for chainability</span>
+</code></pre>
+<h4 id="resize">.resize()</h4>
+<p>Use this to manually resize the canvas element. This is run each time the browser is resized, but you can call this method manually if you change the size of the canvas nodes container element.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Resizes &amp; redraws to fill its container element</span>
+myLineChart.resize();
+<span class="hljs-comment">// =&gt; returns 'this' for chainability</span>
+</code></pre>
+<h4 id="destroy">.destroy()</h4>
+<p>Use this to destroy any chart instances that are created. This will clean up any references stored to the chart object within Chartling.js, along with any associated event listeners attached by Chartling.js.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Destroys a specific chart instance</span>
+myLineChart.destroy();
+</code></pre>
+<h4 id="tobase64image">.toBase64Image()</h4>
+<p>This returns a base 64 encoded string of the chart in it&#39;s current state.</p>
+<pre><code class="lang-javascript">myLineChart.toBase64Image();
+<span class="hljs-comment">// =&gt; returns png data url of the image on the canvas</span>
+</code></pre>
+<h4 id="generatelegend">.generateLegend()</h4>
+<p>Returns an HTML string of a legend for that chart. The template for this legend is at <code>legendTemplate</code> in the chart options.</p>
+<pre><code class="lang-javascript">myLineChart.generateLegend();
+<span class="hljs-comment">// =&gt; returns HTML string of a legend for this chart</span>
+</code></pre>
 
-<script src="Chartling.js"></script>
-<script>
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
-
-    var ctx = document.getElementById("linechart").getContext("2d");
-    var chart= new Chart(ctx).Line(data);
-</script>
-<script>
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.5)",
-                strokeColor: "rgba(220,220,220,0.8)",
-                highlightFill: "rgba(220,220,220,0.75)",
-                highlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.5)",
-                strokeColor: "rgba(151,187,205,0.8)",
-                highlightFill: "rgba(151,187,205,0.75)",
-                highlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
-
-    var ctx = document.getElementById("barchart").getContext("2d");
-    var chart= new Chart(ctx).Bar(data);
-</script>
-
-<script>
-    var data = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 90, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 96, 27, 100]
-            }
-        ]
-    };
-
-    var ctx = document.getElementById("radarchart").getContext("2d");
-    var chart= new Chart(ctx).Radar(data);
-</script>
-
-<script>
-    var data = [
-        {
-            value: 300,
-            color:"#F7464A",
-            highlight: "#FF5A5E",
-            label: "Red"
-        },
-        {
-            value: 50,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Green"
-        },
-        {
-            value: 100,
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "Yellow"
-        },
-        {
-            value: 40,
-            color: "#949FB1",
-            highlight: "#A8B3C5",
-            label: "Grey"
-        },
-        {
-            value: 120,
-            color: "#4D5360",
-            highlight: "#616774",
-            label: "Dark Grey"
-        }
-    ];
-
-    var ctx = document.getElementById("polarchart").getContext("2d");
-    var chart= new Chart(ctx).PolarArea(data);
-</script>
-
-<script>
-    var data = [
-        {
-            value: 300,
-            color:"#F7464A",
-            highlight: "#FF5A5E",
-            label: "Red"
-        },
-        {
-            value: 50,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Green"
-        },
-        {
-            value: 100,
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "Yellow"
-        }
-    ];
-
-    var ctx = document.getElementById("doghnutchart").getContext("2d");
-    var chart= new Chart(ctx).Doughnut(data);
-
-    var ctx = document.getElementById("piechart").getContext("2d");
-    var chart= new Chart(ctx).Pie(data);
-</script>
                     
                     </section>
                 
@@ -514,8 +390,10 @@
         </div>
 
         
+        <a href="./05-Pie-Doughnut-Chart.html" class="navigation navigation-prev " aria-label="Previous page: Pie/Doughnut Charts"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./00-Getting-Started.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Getting Started"><i class="fa fa-angle-right"></i></a>
+        
+        <a href="./06_1-Writing-New-Chart-Types.html" class="navigation navigation-next " aria-label="Next page: Writing New Chart Types"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

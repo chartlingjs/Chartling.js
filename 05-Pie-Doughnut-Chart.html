@@ -4,9 +4,9 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Introduction | Chartling.js</title>
+        <title>Pie/Doughnut Charts | Chartling.js</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Book generated using GitBook">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 1.3.3">
         <meta name="HandheldFriendly" content="true"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -17,8 +17,10 @@
         
     
     
-    <link rel="next" href="./00-Getting-Started.html" />
+    <link rel="next" href="./06-Advanced.html" />
     
+    
+    <link rel="prev" href="./04-Polar-Area-Chart.html" />
     
 
         
@@ -30,7 +32,7 @@
 
 
         
-    <div class="book" data-level="0" data-basepath="." data-revision="1418228853361">
+    <div class="book" data-level="1.5" data-basepath="." data-revision="1418228853361">
     
 
 <div class="book-summary">
@@ -48,7 +50,7 @@
         
     
         
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
                     <a href="./index.html">
@@ -143,7 +145,7 @@
         </li>
     
         
-        <li class="chapter " data-level="1.5" data-path="05-Pie-Doughnut-Chart.html">
+        <li class="chapter active" data-level="1.5" data-path="05-Pie-Doughnut-Chart.html">
             
                 
                     <a href="./05-Pie-Doughnut-Chart.html">
@@ -338,145 +340,24 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_753">
+                    <section class="normal" id="section-gitbook_747">
                     
-                        <h1 id="chartlingjs">Chartling.js</h1>
+                        <h3 id="introduction">Introduction</h3>
+<p>Pie and doughnut charts are probably the most commonly used charts. They are divided into segments, the arc of each segment shows the proportional value of each piece of data.</p>
+<p>They are excellent at showing the relational proportions between data.</p>
+<p>Pie and doughnut charts are effectively the same class in Chartling.js, but have one different default value - their <code>percentageInnerCutout</code>. This equates what percentage of the inner should be cut out. This defaults to <code>0</code> for pie charts, and <code>50</code> for doughnuts.</p>
+<p>They are also registered under two aliases in the <code>Chart</code> core. Other than their different default value, and different alias, they are exactly the same.</p>
+<div class="canvas-holder" style="align:center;">
+    <canvas id="doghnutchart" width="350" height="350" style="margin-right: 65px;"></canvas>
+
+    <canvas id="piechart" width="350" height="350"></canvas>
+</div>
+
 <div class="canvas-holder">
-    <canvas id="linechart" width="250" height="250"></canvas>
-    <canvas id="barchart" width="250" height="250"></canvas>
-    <canvas id="radarchart" width="250" height="250"></canvas>
-    <canvas id="polarchart" width="250" height="250"></canvas>
-    <canvas id="doghnutchart" width="250" height="250"></canvas>
-    <canvas id="piechart" width="250" height="250"></canvas>
+
 </div>
 
 <script src="Chartling.js"></script>
-<script>
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
-
-    var ctx = document.getElementById("linechart").getContext("2d");
-    var chart= new Chart(ctx).Line(data);
-</script>
-<script>
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.5)",
-                strokeColor: "rgba(220,220,220,0.8)",
-                highlightFill: "rgba(220,220,220,0.75)",
-                highlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.5)",
-                strokeColor: "rgba(151,187,205,0.8)",
-                highlightFill: "rgba(151,187,205,0.75)",
-                highlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
-
-    var ctx = document.getElementById("barchart").getContext("2d");
-    var chart= new Chart(ctx).Bar(data);
-</script>
-
-<script>
-    var data = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 90, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 96, 27, 100]
-            }
-        ]
-    };
-
-    var ctx = document.getElementById("radarchart").getContext("2d");
-    var chart= new Chart(ctx).Radar(data);
-</script>
-
-<script>
-    var data = [
-        {
-            value: 300,
-            color:"#F7464A",
-            highlight: "#FF5A5E",
-            label: "Red"
-        },
-        {
-            value: 50,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Green"
-        },
-        {
-            value: 100,
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "Yellow"
-        },
-        {
-            value: 40,
-            color: "#949FB1",
-            highlight: "#A8B3C5",
-            label: "Grey"
-        },
-        {
-            value: 120,
-            color: "#4D5360",
-            highlight: "#616774",
-            label: "Dark Grey"
-        }
-    ];
-
-    var ctx = document.getElementById("polarchart").getContext("2d");
-    var chart= new Chart(ctx).PolarArea(data);
-</script>
-
 <script>
     var data = [
         {
@@ -505,6 +386,113 @@
     var ctx = document.getElementById("piechart").getContext("2d");
     var chart= new Chart(ctx).Pie(data);
 </script>
+
+
+<h3 id="example-usage">Example usage</h3>
+<pre><code class="lang-javascript"><span class="hljs-comment">// For a pie chart</span>
+<span class="hljs-keyword">var</span> myPieChart = <span class="hljs-keyword">new</span> Chart(ctx[<span class="hljs-number">0</span>]).Pie(data,options);
+
+<span class="hljs-comment">// And for a doughnut chart</span>
+<span class="hljs-keyword">var</span> myDoughnutChart = <span class="hljs-keyword">new</span> Chart(ctx[<span class="hljs-number">1</span>]).Doughnut(data,options);
+</code></pre>
+<h3 id="data-structure">Data structure</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> data = [
+    {
+        value: <span class="hljs-number">300</span>,
+        color:<span class="hljs-string">"#F7464A"</span>,
+        highlight: <span class="hljs-string">"#FF5A5E"</span>,
+        label: <span class="hljs-string">"Red"</span>
+    },
+    {
+        value: <span class="hljs-number">50</span>,
+        color: <span class="hljs-string">"#46BFBD"</span>,
+        highlight: <span class="hljs-string">"#5AD3D1"</span>,
+        label: <span class="hljs-string">"Green"</span>
+    },
+    {
+        value: <span class="hljs-number">100</span>,
+        color: <span class="hljs-string">"#FDB45C"</span>,
+        highlight: <span class="hljs-string">"#FFC870"</span>,
+        label: <span class="hljs-string">"Yellow"</span>
+    }
+]
+</code></pre>
+<p>For a pie chart, you must pass in an array of objects with a value and a color property. The value attribute should be a number, Chartling.js will total all of the numbers and calculate the relative proportion of each. The color attribute should be a string. Similar to CSS, for this string you can use HEX notation, RGB, RGBA or HSL.</p>
+<h3 id="chart-options">Chart options</h3>
+<p>These are the customisation options specific to Pie &amp; Doughnut charts. These options are merged with the <a href="#getting-started-global-chart-configuration">global chart configuration options</a>, and form the options of the chart.</p>
+<pre><code class="lang-javascript">{
+    <span class="hljs-comment">//Boolean - Whether we should show a stroke on each segment</span>
+    segmentShowStroke : <span class="hljs-literal">true</span>,
+
+    <span class="hljs-comment">//String - The colour of each segment stroke</span>
+    segmentStrokeColor : <span class="hljs-string">"#fff"</span>,
+
+    <span class="hljs-comment">//Number - The width of each segment stroke</span>
+    segmentStrokeWidth : <span class="hljs-number">2</span>,
+
+    <span class="hljs-comment">//Number - The percentage of the chart that we cut out of the middle</span>
+    percentageInnerCutout : <span class="hljs-number">50</span>, <span class="hljs-comment">// This is 0 for Pie charts</span>
+
+    <span class="hljs-comment">//Number - Amount of animation steps</span>
+    animationSteps : <span class="hljs-number">100</span>,
+
+    <span class="hljs-comment">//String - Animation easing effect</span>
+    animationEasing : <span class="hljs-string">"easeOutBounce"</span>,
+
+    <span class="hljs-comment">//Boolean - Whether we animate the rotation of the Doughnut</span>
+    animateRotate : <span class="hljs-literal">true</span>,
+
+    <span class="hljs-comment">//Boolean - Whether we animate scaling the Doughnut from the centre</span>
+    animateScale : <span class="hljs-literal">false</span>,
+    {% raw %}
+    <span class="hljs-comment">//String - A legend template</span>
+    legendTemplate : <span class="hljs-string">"&lt;ul class=\"&lt;%=name.toLowerCase()%&gt;-legend\"&gt;&lt;% for (var i=0; i&lt;segments.length; i++){%&gt;&lt;li&gt;&lt;span style=\"background-color:&lt;%=segments[i].fillColor%&gt;\"&gt;&lt;/span&gt;&lt;%if(segments[i].label){%&gt;&lt;%=segments[i].label%&gt;&lt;%}%&gt;&lt;/li&gt;&lt;%}%&gt;&lt;/ul&gt;"</span>
+    {% endraw %}
+}
+</code></pre>
+<p>You can override these for your <code>Chart</code> instance by passing a second argument into the <code>Doughnut</code> method as an object with the keys you want to override.</p>
+<p>For example, we could have a doughnut chart that animates by scaling out from the centre like so:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">new</span> Chart(ctx).Doughnut(data, {
+    animateScale: <span class="hljs-literal">true</span>
+});
+<span class="hljs-comment">// This will create a chart with all of the default options, merged from the global config,</span>
+<span class="hljs-comment">// and the Doughnut chart defaults but this particular instance will have `animateScale` set to `true`.</span>
+</code></pre>
+<p>We can also change these default values for each Doughnut type that is created, this object is available at <code>Chart.defaults.Doughnut</code>. Pie charts also have a clone of these defaults available to change at <code>Chart.defaults.Pie</code>, with the only difference being <code>percentageInnerCutout</code> being set to 0.</p>
+<h3 id="prototype-methods">Prototype methods</h3>
+<h4 id="getsegmentsatevent-event-">.getSegmentsAtEvent( event )</h4>
+<p>Calling <code>getSegmentsAtEvent(event)</code> on your Chart instance passing an argument of an event, or jQuery event, will return the segment elements that are at the same position of that event.</p>
+<pre><code class="lang-javascript">canvas.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(evt)</span></span>{
+    <span class="hljs-keyword">var</span> activePoints = myDoughnutChart.getSegmentsAtEvent(evt);
+    <span class="hljs-comment">// =&gt; activePoints is an array of segments on the canvas that are at the same position as the click event.</span>
+};
+</code></pre>
+<p>This functionality may be useful for implementing DOM based tooltips, or triggering custom behaviour in your application.</p>
+<h4 id="update-">.update( )</h4>
+<p>Calling <code>update()</code> on your Chart instance will re-render the chart with any updated values, allowing you to edit the value of multiple existing points, then render those in one animated render loop.</p>
+<pre><code class="lang-javascript">myDoughnutChart.segments[<span class="hljs-number">1</span>].value = <span class="hljs-number">10</span>;
+<span class="hljs-comment">// Would update the first dataset's value of 'Green' to be 10</span>
+myDoughnutChart.update();
+<span class="hljs-comment">// Calling update now animates the circumference of the segment 'Green' from 50 to 10.</span>
+<span class="hljs-comment">// and transitions other segment widths</span>
+</code></pre>
+<h4 id="adddata-segmentdata-index-">.addData( segmentData, index )</h4>
+<p>Calling <code>addData(segmentData, index)</code> on your Chart instance passing an object in the same format as in the constructor. There is an optional second argument of &#39;index&#39;, this determines at what index the new segment should be inserted into the chart.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// An object in the same format as the original data source</span>
+myDoughnutChart.addData({
+    value: <span class="hljs-number">130</span>,
+    color: <span class="hljs-string">"#B48EAD"</span>,
+    highlight: <span class="hljs-string">"#C69CBE"</span>,
+    label: <span class="hljs-string">"Purple"</span>
+});
+<span class="hljs-comment">// The new segment will now animate in.</span>
+</code></pre>
+<h4 id="removedata-index-">.removeData( index )</h4>
+<p>Calling <code>removeData(index)</code> on your Chart instance will remove segment at that particular index. If none is provided, it will default to the last segment.</p>
+<pre><code class="lang-javascript">myDoughnutChart.removeData();
+<span class="hljs-comment">// Other segments will update to fill the empty space left.</span>
+</code></pre>
+
                     
                     </section>
                 
@@ -514,8 +502,10 @@
         </div>
 
         
+        <a href="./04-Polar-Area-Chart.html" class="navigation navigation-prev " aria-label="Previous page: Polar Area Charts"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./00-Getting-Started.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Getting Started"><i class="fa fa-angle-right"></i></a>
+        
+        <a href="./06-Advanced.html" class="navigation navigation-next " aria-label="Next page: Advanced Usage"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
