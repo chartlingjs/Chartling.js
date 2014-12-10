@@ -1,34 +1,29 @@
----
-title: Getting started
-anchor: getting-started
----
+###Include Chartling.js
 
-###Include Chart.js
-
-First we need to include the Chart.js library on the page. The library occupies a global variable of `Chart`.
+First we need to include the Chartling.js library on the page. The library occupies a global variable of `Chart`.
 
 ```html
-<script src="Chart.js"></script>
+<script src="Chartling.js"></script>
 ```
 
-Alternatively, if you're using an AMD loader for JavaScript modules, that is also supported in the Chart.js core. Please note: the library will still occupy a global variable of `Chart`, even if it detects `define` and `define.amd`. If this is a problem, you can call `noConflict` to restore the global Chart variable to it's previous owner.
+Alternatively, if you're using an AMD loader for JavaScript modules, that is also supported in the Chartling.js core. Please note: the library will still occupy a global variable of `Chart`, even if it detects `define` and `define.amd`. If this is a problem, you can call `noConflict` to restore the global Chart variable to it's previous owner.
 
 ```javascript
 // Using requirejs
-require(['path/to/Chartjs'], function(Chart){
-	// Use Chart.js as normal here.
+require(['path/to/Chartlingjs'], function(Chart){
+	// Use Chartling.js as normal here.
 
 	// Chart.noConflict restores the Chart global variable to it's previous owner
 	// The function returns what was previously Chart, allowing you to reassign.
-	var Chartjs = Chart.noConflict();
+	var chart = Chart.noConflict();
 
 });
 ```
 
-You can also grab Chart.js using bower:
+You can also grab Chartling.js using bower:
 
 ```bash
-bower install chartjs --save
+bower install chartlingjs --save
 ```
 
 ###Creating a chart
@@ -54,19 +49,19 @@ var ctx = $("#myChart").get(0).getContext("2d");
 var myNewChart = new Chart(ctx);
 ```
 
-After we've instantiated the Chart class on the canvas we want to draw on, Chart.js will handle the scaling for retina displays.
+After we've instantiated the Chart class on the canvas we want to draw on, Chartling.js will handle the scaling for retina displays.
 
-With the Chart class set up, we can go on to create one of the charts Chart.js has available. In the example below, we would be drawing a Polar area chart.
+With the Chart class set up, we can go on to create one of the charts Chartling.js has available. In the example below, we would be drawing a Polar area chart.
 
 ```javascript
 new Chart(ctx).PolarArea(data, options);
 ```
 
-We call a method of the name of the chart we want to create. We pass in the data for that chart type, and the options for that chart as parameters. Chart.js will merge the global defaults with chart type specific defaults, then merge any options passed in as a second argument after data.
+We call a method of the name of the chart we want to create. We pass in the data for that chart type, and the options for that chart as parameters. Chartling.js will merge the global defaults with chart type specific defaults, then merge any options passed in as a second argument after data.
 
 ###Global chart configuration
 
-This concept was introduced in Chart.js 1.0 to keep configuration DRY, and allow for changing options globally across chart types, avoiding the need to specify options for each instance, or the default for a particular chart type.
+This concept was introduced in Chartling.js 1.0 to keep configuration DRY, and allow for changing options globally across chart types, avoiding the need to specify options for each instance, or the default for a particular chart type.
 
 ```javascript
 Chart.defaults.global = {

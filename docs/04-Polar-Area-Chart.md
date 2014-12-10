@@ -1,15 +1,51 @@
----
-title: Polar Area Chart
-anchor: polar-area-chart
----
 ### Introduction
 Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value.
 
 This type of chart is often useful when we want to show a comparison data similar to a pie chart, but also show a scale of values for context.
 
 <div class="canvas-holder">
-	<canvas width="250" height="125"></canvas>
+	<canvas id="chart" width="770" height="400"></canvas>
 </div>
+
+<script src="Chartling.js"></script>
+<script>
+	var data = [
+    	{
+    		value: 300,
+    		color:"#F7464A",
+    		highlight: "#FF5A5E",
+    		label: "Red"
+    	},
+    	{
+    		value: 50,
+    		color: "#46BFBD",
+    		highlight: "#5AD3D1",
+    		label: "Green"
+    	},
+    	{
+    		value: 100,
+    		color: "#FDB45C",
+    		highlight: "#FFC870",
+    		label: "Yellow"
+    	},
+    	{
+    		value: 40,
+    		color: "#949FB1",
+    		highlight: "#A8B3C5",
+    		label: "Grey"
+    	},
+    	{
+    		value: 120,
+    		color: "#4D5360",
+    		highlight: "#616774",
+    		label: "Dark Grey"
+    	}
+    ];
+
+	var ctx = document.getElementById("chart").getContext("2d");
+	var chart= new Chart(ctx).PolarArea(data);
+</script>
+
 
 ### Example usage
 

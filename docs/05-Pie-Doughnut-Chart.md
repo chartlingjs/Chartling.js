@@ -1,23 +1,51 @@
----
-title: Pie & Doughnut Charts
-anchor: doughnut-pie-chart
----
 ###Introduction
-Pie and doughnut charts are probably the most commonly used chart there are. They are divided into segments, the arc of each segment shows the proportional value of each piece of data.
+Pie and doughnut charts are probably the most commonly used charts. They are divided into segments, the arc of each segment shows the proportional value of each piece of data.
 
 They are excellent at showing the relational proportions between data.
 
-Pie and doughnut charts are effectively the same class in Chart.js, but have one different default value - their `percentageInnerCutout`. This equates what percentage of the inner should be cut out. This defaults to `0` for pie charts, and `50` for doughnuts.
+Pie and doughnut charts are effectively the same class in Chartling.js, but have one different default value - their `percentageInnerCutout`. This equates what percentage of the inner should be cut out. This defaults to `0` for pie charts, and `50` for doughnuts.
 
 They are also registered under two aliases in the `Chart` core. Other than their different default value, and different alias, they are exactly the same.
 
-<div class="canvas-holder half">
-	<canvas width="250" height="125"></canvas>
+<div class="canvas-holder" style="align:center;">
+	<canvas id="doghnutchart" width="350" height="350" style="margin-right: 65px;"></canvas>
+
+	<canvas id="piechart" width="350" height="350"></canvas>
 </div>
 
-<div class="canvas-holder half">
-	<canvas width="250" height="125"></canvas>
+<div class="canvas-holder">
+
 </div>
+
+<script src="Chartling.js"></script>
+<script>
+	var data = [
+    	{
+    		value: 300,
+    		color:"#F7464A",
+    		highlight: "#FF5A5E",
+    		label: "Red"
+    	},
+    	{
+    		value: 50,
+    		color: "#46BFBD",
+    		highlight: "#5AD3D1",
+    		label: "Green"
+    	},
+    	{
+    		value: 100,
+    		color: "#FDB45C",
+    		highlight: "#FFC870",
+    		label: "Yellow"
+    	}
+    ];
+
+	var ctx = document.getElementById("doghnutchart").getContext("2d");
+	var chart= new Chart(ctx).Doughnut(data);
+
+	var ctx = document.getElementById("piechart").getContext("2d");
+	var chart= new Chart(ctx).Pie(data);
+</script>
 
 
 ### Example usage
@@ -55,7 +83,7 @@ var data = [
 ]
 ```
 
-For a pie chart, you must pass in an array of objects with a value and a color property. The value attribute should be a number, Chart.js will total all of the numbers and calculate the relative proportion of each. The color attribute should be a string. Similar to CSS, for this string you can use HEX notation, RGB, RGBA or HSL.
+For a pie chart, you must pass in an array of objects with a value and a color property. The value attribute should be a number, Chartling.js will total all of the numbers and calculate the relative proportion of each. The color attribute should be a string. Similar to CSS, for this string you can use HEX notation, RGB, RGBA or HSL.
 
 ### Chart options
 
